@@ -25,5 +25,21 @@ public class LayerArchitectureTest  {
 		
 		
 	}
+	
+	@Test
+	public void verificar_correcto_acoplamiento_aferente() throws IOException {
+		 
+	    
+        JDepend jdepend = new JDepend();		
+        jdepend.addDirectory(new File("C:\\Users\\Mauricio Giraldo\\Dropbox\\Proyecto de vida\\Vida profesional\\Enterpreneur\\Ejec\\Energizados-AgileArchitectura\\Energizados-Consolidador\\bin\\main").getPath());      
+        jdepend.analyze();
+        JavaPackage modulo2 = jdepend.getPackage("co.com.valtica.energizados.modulo2");
+        
+		
+		Assert.assertEquals(1, modulo2.afferentCoupling());
+		
+		
+		
+	}
 
 }
