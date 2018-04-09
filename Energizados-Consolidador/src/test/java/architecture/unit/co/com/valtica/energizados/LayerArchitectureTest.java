@@ -16,7 +16,7 @@ public class LayerArchitectureTest  {
 		 
 	    
         JDepend jdepend = new JDepend();		
-        jdepend.addDirectory(new File("C:\\Users\\Mauricio Giraldo\\Dropbox\\Proyecto de vida\\Vida profesional\\Enterpreneur\\Ejec\\All\\Training\\Curso Elite Agile Architect\\Demo App\\Energizados-Consolidador\\bin\\main").getPath());      
+        jdepend.addDirectory(new File("C:\\Users\\Mauricio Giraldo\\Dropbox\\Proyecto de vida\\Vida profesional\\Enterpreneur\\Ejec\\Energizados-AgileArchitectura\\Energizados-Consolidador\\bin\\main").getPath());      
         jdepend.analyze();
         JavaPackage modulo2 = jdepend.getPackage("co.com.valtica.energizados.modulo2");
 		
