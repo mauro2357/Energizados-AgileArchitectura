@@ -3,6 +3,7 @@ package co.com.valtica.energizados.domain;
 import java.math.BigDecimal;
 
 public class FacturaRechazada {
+	private IDescuentosRepository descuentosRepository;
 	private Factura  factura;
 	private String estado;
 	private ContadorAgua contadorAgua;
@@ -10,6 +11,10 @@ public class FacturaRechazada {
 	private ContadorGas contadorGas;
 	private double descuentoProgramado;
 
+	public FacturaRechazada(IDescuentosRepository descuentosRepository) {
+		this.descuentosRepository=descuentosRepository;
+	}
+	
 	public Factura getFactura() {
 		return factura;
 	}
@@ -59,6 +64,7 @@ public class FacturaRechazada {
 	}
 
 	public Factura gestionar() {
+		
 		boolean consistente=true;
 		if(factura.getConsumoAgua()!=contadorAgua.getConsumo()) {
 			consistente=false;
@@ -71,6 +77,7 @@ public class FacturaRechazada {
 		}
 		if(!consistente) {
 			descuentoProgramado=0.5;
+			descuentosRepository.generarDescuento(descuentoProgramado);
 			estado="Regenerada";
 			return regenerarFactura();
 		}else {

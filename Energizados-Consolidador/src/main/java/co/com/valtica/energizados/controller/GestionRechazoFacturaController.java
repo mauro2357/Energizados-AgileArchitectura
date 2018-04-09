@@ -1,25 +1,25 @@
-package functional.unit.co.com.valtica.energizados;
+package co.com.valtica.energizados.controller;
 
 import java.math.BigDecimal;
 
-import org.databene.contiperf.Required;
-import org.junit.Assert;
-import org.junit.Test;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import co.com.valtica.energizados.domain.ContadorAgua;
 import co.com.valtica.energizados.domain.ContadorElectricidad;
 import co.com.valtica.energizados.domain.ContadorGas;
 import co.com.valtica.energizados.domain.Factura;
 import co.com.valtica.energizados.domain.FacturaRechazada;
+import co.com.valtica.energizados.service.GestionRechazoFacturaService;
 
-public class GestionFacturaRechazada {
-	
-	@Test
-	@Required(max = 100, average = 100, percentile90=100)
-	public void Regenerar_factura_por_consumo_incorrecto_Agua_ante_factura_con_inconformidad(){
-		System.out.println("Ejecutando prueba");
-		//Arrange
-		FacturaRechazada facturaRechazada=new FacturaRechazada(new DescuentosMockRepository());
+@RestController
+public class GestionRechazoFacturaController {
+    
+    @RequestMapping("/regenerarFactura")
+    public String index() {
+    	GestionRechazoFacturaService facturaService=new GestionRechazoFacturaService();
+    	
+    	FacturaRechazada facturaRechazada=new FacturaRechazada(new DescuentosRepository());
 		Factura factura=new Factura();
 		factura.setValorAgua(new BigDecimal(23000));
 		factura.setConsumoAgua(new BigDecimal(23));
@@ -45,14 +45,9 @@ public class GestionFacturaRechazada {
 		facturaRechazada.setContadorAgua(contadorAgua);
 		facturaRechazada.setContadorElectricidad(contadorElectricidad);
 		facturaRechazada.setContadorGas(contadorgas);
-		
-		//Act
-		Factura facturaRegenerada= facturaRechazada.gestionar();
-		
-		//Assert
-		Assert.assertEquals(new BigDecimal(87000), facturaRegenerada.getValorTotal());
-		Assert.assertEquals(0.5, facturaRechazada.getDescuentoProgramado(),0);
-		Assert.assertEquals("Regenerada", facturaRechazada.getEstado());
-	}
-
+    	
+    	Factura facturaRegenerada= facturaService.gestionar(facturaRechazada);
+        return "Factura regenrada: Nuevo valor: "+ facturaRegenerada.getValorTotal();
+    }
+    
 }
