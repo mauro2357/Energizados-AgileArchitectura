@@ -1,9 +1,11 @@
-package co.com.valtica.energizados.domain;
+package co.com.valtica.energizados.facturacion.domain.entities;
 
 import java.math.BigDecimal;
 
+import co.com.valtica.energizados.facturacion.domain.repositories.DescuentosRepository;
+
 public class FacturaRechazada {
-	private IDescuentosRepository descuentosRepository;
+	private DescuentosRepository descuentosRepository;
 	private Factura  factura;
 	private String estado;
 	private ContadorAgua contadorAgua;
@@ -11,7 +13,7 @@ public class FacturaRechazada {
 	private ContadorGas contadorGas;
 	private double descuentoProgramado;
 
-	public FacturaRechazada(IDescuentosRepository descuentosRepository) {
+	public FacturaRechazada(DescuentosRepository descuentosRepository) {
 		this.descuentosRepository=descuentosRepository;
 	}
 	

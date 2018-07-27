@@ -1,8 +1,8 @@
 package functional.unit.co.com.valtica.energizados;
 
-import co.com.valtica.energizados.domain.IDescuentosRepository;
+import co.com.valtica.energizados.facturacion.domain.repositories.DescuentosRepository;
 
-public class DescuentosMockRepository implements IDescuentosRepository{
+public class DescuentosMockRepository implements DescuentosRepository{
 
 	@Override
 	public void generarDescuento(double descuento) {

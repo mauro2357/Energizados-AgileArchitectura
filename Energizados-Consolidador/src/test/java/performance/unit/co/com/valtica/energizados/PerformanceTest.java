@@ -5,10 +5,10 @@ import org.databene.contiperf.junit.ContiPerfSuiteRunner;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
 
-import functional.unit.co.com.valtica.energizados.GestionFacturaRechazada;
+import functional.unit.co.com.valtica.energizados.GestionFacturaRechazadaTest;
 
 @RunWith(ContiPerfSuiteRunner.class)
-@SuiteClasses(GestionFacturaRechazada.class)
+@SuiteClasses(GestionFacturaRechazadaTest.class)
 @PerfTest(invocations = 10, threads = 30)
 public class PerformanceTest {
 

@@ -6,13 +6,13 @@ import org.databene.contiperf.Required;
 import org.junit.Assert;
 import org.junit.Test;
 
-import co.com.valtica.energizados.domain.ContadorAgua;
-import co.com.valtica.energizados.domain.ContadorElectricidad;
-import co.com.valtica.energizados.domain.ContadorGas;
-import co.com.valtica.energizados.domain.Factura;
-import co.com.valtica.energizados.domain.FacturaRechazada;
+import co.com.valtica.energizados.facturacion.domain.entities.ContadorAgua;
+import co.com.valtica.energizados.facturacion.domain.entities.ContadorElectricidad;
+import co.com.valtica.energizados.facturacion.domain.entities.ContadorGas;
+import co.com.valtica.energizados.facturacion.domain.entities.Factura;
+import co.com.valtica.energizados.facturacion.domain.entities.FacturaRechazada;
 
-public class GestionFacturaRechazada {
+public class GestionFacturaRechazadaTest {
 	
 	@Test
 	@Required(max = 100, average = 100, percentile90=100)

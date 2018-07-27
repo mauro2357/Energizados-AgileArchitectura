@@ -1,4 +1,4 @@
-package co.com.valtica.energizados.domain;
+package co.com.valtica.energizados.facturacion.domain.entities;
 
 import java.math.BigDecimal;
 
